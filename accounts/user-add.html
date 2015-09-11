@@ -1,0 +1,33 @@
+<div ng-controller="UserAdd as userAdd" class="modal fade" id="userModal" tabindex="-1" role="dialog"  aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <form name="form" novalidate>
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <h4>Add {{userAdd.name}}</h4>
+        </div>
+        <div class="modal-body">
+          <div class="form-group" ng-class="{'has-error': form.userAdd.userName.$error.required}">
+            <label for="userName">Name:</label>
+            <input id="userName" type="text" class="form-control" ng-model="userAdd.userInfo.userName" >
+            <div ng-show="form.userAdd.userName.$invalid">
+              <span ng-show="form.userAdd.userName.$error.required " class="help-block">User Name is required</span>
+            </div>
+          </div>
+          <div class="form-group" ng-class="{'has-error': form.userAddress.$error.required}">
+            <label for="userAddress">Address:</label>
+            <input id="userAddress" type="text"  class="form-control" ng-model="userAdd.userInfo.userAddress">
+            <div ng-show="form.userAdd.userAddress.$invalid">
+              <span ng-show="form.userAdd.userAddress.$error.required " class="help-block">User address is required</span>
+            </div>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary pull-left" ng-disabled="form.$invalid" ng-click="userAdd.addUser()">Add</button>
+          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

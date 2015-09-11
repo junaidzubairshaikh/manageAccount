@@ -1,0 +1,42 @@
+<div ng-controller="AccountAdd as accountAdd" class="modal fade" id="accountnModal" tabindex="-1" role="dialog"  aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <form name="form" novalidate>
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <h4>Add {{accountAdd.name}}</h4>
+        </div>
+        <div class="modal-body">
+
+          <div class="form-group" >
+            <label for="accountTitle">Account Title:</label>
+            <input id="accountTitle" type="text" class="form-control" ng-model="accountAdd.userAccountInfo.AccountTitle">
+            <div ng-show="form.userAdd.userName.$invalid">
+              <span ng-show="form.userAdd.userName.$error.required " class="help-block">Account title is required</span>
+            </div>
+          </div>
+          <div class="form-group" >
+            <label for="accountNumber">Account Number:</label>
+            <input id="accountNumber" type="text" class="form-control" ng-model="accountAdd.userAccountInfo.AccountNumber" maxlength="6">
+            <div ng-show="form.userAdd.userName.$invalid">
+              <span ng-show="form.userAdd.userName.$error.required " class="help-block">Account Number is required</span>
+            </div>
+          </div>
+          <div class="form-group" >
+            <label for="accountBalance">Balance:</label>
+            <input id="accountBalance" type="text" class="form-control" ng-model="accountAdd.userAccountInfo.Balance" maxlength="6">
+            <div ng-show="form.userAdd.userName.$invalid">
+              <span ng-show="form.userAdd.userName.$error.required " class="help-block">Balance amount is required</span>
+            </div>
+          </div>
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary pull-left" ng-disabled="form.$invalid" ng-click="accountAdd.addAccount()">Add</button>
+          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
