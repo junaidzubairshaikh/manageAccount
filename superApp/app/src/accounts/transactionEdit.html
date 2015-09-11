@@ -1,0 +1,25 @@
+<div>
+  <div class="main-header">
+    <h2>Edit Transaction # {{}}</h2>
+  </div>
+  <div class="main-content">
+    <div class="row">
+      <form name="form" novalidate>
+        <div class="col-lg-4">
+          <div class="form-group" ng-class="{'has-error': form.transactionAmount.$error.required }">
+            <label for="transactionAmount">Transaction Amount</label>
+            <input id="transactionAmount" name="transactionAmount" ng-model="vm.transactionInfo.TransactionAmount" class="form-control" placeholder="Transaction Balance" type="text" required maxlength="100">
+            <div ng-show="form.transactionAmount.$invalid">
+              <span ng-show="form.transactionAmount.$error.required " class="help-block">Transaction Amount is required</span>
+            </div>
+          </div>
+
+        </div>
+        <div class="btn-toolbar col-lg-12">
+          <button class="btn btn-primary pull-left" type="button" ng-disabled="form.$invalid " ng-click="transactionCtrl.updateUserTransaction(transactionCtrl.transactionInfo)">Update</button>
+          <a class="btn btn-default" ui-sref="Transaction({userId:vm.userId,accountId:vm.accountId})">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

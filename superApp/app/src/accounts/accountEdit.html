@@ -1,0 +1,34 @@
+<div>
+  <div class="main-header">
+    <h2>Edit Account # {{}}</h2>
+  </div>
+  <div class="main-content">
+    <div class="row">
+      <form name="form" novalidate>
+        <div class="col-lg-4">
+          <div class="form-group" ng-class="{'has-error': form.accountTitle.$error.required }">
+            <label for="accountTitle">Account Title</label>
+            <input id="accountTitle" name="accountTitle" ng-model="vm.accountInfo.AccountTitle" class="form-control" placeholder="Account title" type="text" required maxlength="100">
+            <div ng-show="form.accountTitle.$invalid">
+              <span ng-show="form.accountTitle.$error.required " class="help-block">Account Title is required</span>
+            </div>
+          </div>
+          <div class="form-group" ng-class="{'has-error': form.accountNumber.$error.required}">
+            <label for="accountNumber">Account Number</label>
+            <input class="form-control" id="accountNumber" name="accountNumber" ng-model="vm.accountInfo.AccountNumber" placeholder="Account Number" required>
+            <span ng-show="form.accountNumber.$error.required" class="help-block">Account Number is required</span>
+          </div>
+          <div class="form-group" ng-class="{'has-error': form.accountBalance.$error.required}">
+            <label for="accountBalance">Account Balance</label>
+            <input class="form-control" id="accountBalance" name="accountBalance" ng-model="vm.accountInfo.Balance" placeholder="Account Balance" required>
+            <span ng-show="form.accountBalance.$error.required" class="help-block">Account Balance is required</span>
+          </div>
+        </div>
+        <div class="btn-toolbar col-lg-12">
+          <button class="btn btn-primary pull-left" type="button" ng-disabled="form.$invalid " ng-click="vm.updateUserAccount(vm.accountInfo)">Update</button>
+          <button class="btn btn-default" ui-sref="Account({userId:vm.userId})">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
