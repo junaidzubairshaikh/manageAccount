@@ -16,8 +16,6 @@
 	function Transaction(transaction,$stateParams){
 		var vm = this;
 
-		vm.testFunction = testFunction;
-
     vm.userId=$stateParams.userId;
     vm.accountId=$stateParams.accountId;
     vm.myTransactions = "Transaction View";
@@ -26,7 +24,6 @@
     vm.transactionInfo={};
 
     vm.loadUserAccountTransactions = function () {
-      //var userId = $location.search().userId;
 
       if (vm.userId) {
         transaction.ViewTransactions(vm.userId, vm.accountId, function (response) {
@@ -53,18 +50,8 @@
     }
 
     vm.updateUserTransaction=function(accountId,accountInfo){
-      //var userId=$location.search().userId;
-    }
 
-    vm.cancelEdit=function(){
-      vm.editPanel=false;
     }
-    vm.back=function(){
-      alert("back to account");
-    }
-    function testFunction(num){
-			//console.info('This is a test function');
-		}
 
     vm.loadUserAccountTransactions();
 	}

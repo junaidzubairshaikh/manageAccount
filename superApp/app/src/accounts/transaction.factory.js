@@ -4,27 +4,25 @@
  * @description < description placeholder >
  */
 
-(function(){
+(function() {
 
   'use strict';
 
-	angular
-		.module('app.accounts')
-		.factory('transaction', transaction);
+  angular
+    .module('app.accounts')
+    .factory('transaction', transaction);
 
   /* @ngInject */
-  function transaction(userData){
+  function transaction(userData) {
 
-		return {
-			testFunction: testFunction,
-      ViewTransactions:ViewUserTransactions,
-      AddTransaction:AddUserTransaction,
+    return {
+      ViewTransactions: ViewUserTransactions,
+      AddTransaction: AddUserTransaction,
       DeleteTransaction: DeleteUserTransaction,
-      EditTransaction:EditUserTransaction
-		};
+      EditTransaction: EditUserTransaction
+    };
 
-    function ViewUserTransactions(userId,accountId,callback) {
-      //var url = 'http://localhost:63342/Task4Accounts/data/data.json';
+    function ViewUserTransactions(userId, accountId, callback) {
 
       var users = userData.GetUsers();
       var user = _.find(users, function (x) {
@@ -34,17 +32,16 @@
         var transactions = _.where(user.Transactions, function (x) {
           return x.AccountId == accountId;
         });
-        var accountIndex = _.forEach(user.Transactions, function (x) {
+      /*  var accountIndex = _.forEach(user.Transactions, function (x) {
           return x.AccountId == accountId;
-        })
-
-          if (callback) {
-            callback(_.uniq(user.Transactions,transactions));
-          }
+        })*/
+        if (callback) {
+          callback(transactions);
+        }
       }
     }
 
-    function AddUserTransaction(userId,accountId,transaction) {
+    function AddUserTransaction(userId, accountId, transaction) {
       var users = userData.GetUsers();
       var user = _.find(users, function (x) {
         return x.id == userId;
@@ -58,7 +55,6 @@
         'TransactionDate': new Date().toUTCString()
       };
 
-
       var userIndex = _.findIndex(users, function (x) {
           return x.id == userId;
         }
@@ -71,33 +67,31 @@
       userData.SetUsers(users);
     }
 
-    function DeleteUserTransaction(userId,accountId,transactionId){
-      var users=userData.GetUsers();
-      var user=_.find(users, function (x) {
+    function DeleteUserTransaction(userId, accountId, transactionId) {
+      var users = userData.GetUsers();
+      var user = _.find(users, function (x) {
         return x.id == userId;
       });
 
-      var transactionLeft=_.remove(user.Transactions,function(x){
-        return (x.AccountId==accountId && x.TransactionId==transactionId);
+      var transactionLeft = _.remove(user.Transactions, function (x) {
+        return (x.AccountId == accountId && x.TransactionId == transactionId);
       });
 
       userData.SetUsers(users);
     }
 
-    function EditUserTransaction(userId,accountId,transactionId,callback){
+    function EditUserTransaction(userId, accountId, transactionId, callback) {
       var users = userData.GetUsers();
       var user = _.find(users, function (x) {
         return x.id == userId;
       });
-      var transactionInfo=_.find(user.Transactions,function(x){
-        return (x.AccountId==accountId && x.TransactionId==transactionId);
+      var transactionInfo = _.find(user.Transactions, function (x) {
+        return (x.AccountId == accountId && x.TransactionId == transactionId);
       });
-      if(callback) {callback(transactionInfo);}
+      if (callback) {
+        callback(transactionInfo);
+      }
     }
-
-		function testFunction(id){
-			//console.info('This is a test function');
-		}
-	}
+  }
 
 }());

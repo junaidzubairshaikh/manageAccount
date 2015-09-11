@@ -16,37 +16,18 @@
   function user(userData) {
 
     return {
-      testFunction: testFunction,
       GetUsers: GetUsers,
-      Add: AddUser,
-      Delete: DeleteUser,
-      ViewAccounts: ViewAccounts
-
+      Add: AddUser
     };
 
 
     function GetUsers(callback) {
-      //var url = 'http://localhost:63342/Task4Accounts/data/data.json';
-
-      //var users = userData.GetUsers();
-      callback(userData.GetUsers());
-
-      /* if(users.length>2){
-       callback(userData.GetUsers());
-       }
-       else{
-       $http.get(url).then(function (response) {
-       if(callback) {
-       userData.Set(response.data);
-       callback(response.data);
-       }
-       })
-       }*/
+      if (callback) {
+        callback(userData.GetUsers());
+      }
     }
 
     function AddUser(userInfo) {
-      //var url = 'http://localhost:63342/Task4Accounts/data/data.json';
-
       var users = userData.GetUsers();
 
       var id = users.length + 1;
@@ -60,23 +41,8 @@
       users.push(user);
 
       userData.SetUsers(users);
-      //use callback for the displaying message
-      //if(callback) {
-      //      callback(data);
-      // }
     }
 
-    function DeleteUser() {
-
-    }
-
-    function ViewAccounts(userId) {
-
-    }
-
-    function testFunction(id) {
-      //console.info('This is a test function');
-    }
   }
 
 }());

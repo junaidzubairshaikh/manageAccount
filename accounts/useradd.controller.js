@@ -4,43 +4,33 @@
  * @description < description placeholder >
  */
 
-(function(){
+(function() {
 
   'use strict';
 
-	angular
-		.module('app.accounts')
-		.controller('UserAdd', UserAdd);
+  angular
+    .module('app.accounts')
+    .controller('UserAdd', UserAdd);
 
   /* @ngInject */
-	function UserAdd(user){
-		var vm = this;
+  function UserAdd(user) {
+    var vm = this;
+    vm.userInfo = {"userName": "", "userAddress": ""};
+    vm.userInfoMaster = angular.copy(vm.userInfo);
 
-		vm.testFunction = testFunction;
+    vm.addUser = function () {
 
-
-    vm.userInfo={"userName":"", "userAddress":""};
-    vm.userInfoMaster=angular.copy(vm.userInfo);
-
-    vm.addUser=function(){
-
-      if(vm.userInfo.userName!='' && vm.userInfo.userAddress!='') {
-
+      if (vm.userInfo.userName != '' && vm.userInfo.userAddress != '') {
         user.Add(vm.userInfo);
         vm.reset();
       }
       $('.modal.in').modal('hide');
     }
 
-    vm.reset=function(){
-      vm.userInfo=angular.copy(vm.userInfoMaster);
+    vm.reset = function () {
+      vm.userInfo = angular.copy(vm.userInfoMaster);
 
     }
-
-
-    function testFunction(num){
-			//console.info('This is a test function');
-		}
-	}
+  }
 
 }());

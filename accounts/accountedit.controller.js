@@ -16,7 +16,6 @@
 	function AccountEdit(account,$stateParams){
 		var vm = this;
 
-		vm.testFunction = testFunction;
     vm.userId=$stateParams.userId;
     vm.accountId=$stateParams.accountId;
 
@@ -29,9 +28,7 @@
     }
 
     vm.editUserAccount()
-    function testFunction(num){
-			console.info('This is a test function');
-		}
+
 	}
 
 }());

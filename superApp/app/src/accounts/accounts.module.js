@@ -15,7 +15,7 @@
   /* @ngInject */
   function configuration($stateProvider) {
 
-    // $urlRouterProvider.otherwise('/');
+
     //add your state mappings here
     $stateProvider
       .state('User', {
@@ -35,7 +35,7 @@
     ).state('Account.Edit', {
         url: '/edit/:accountId',
         templateUrl: 'src/accounts/accountEdit.html',
-         controller: 'AccountEdit as vm'
+        controller: 'AccountEdit as vm'
       }
     ).state('Transaction.Edit', {
         url: '/edit/:transactionId',
