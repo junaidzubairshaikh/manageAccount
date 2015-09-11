@@ -13,7 +13,7 @@
 		.controller('TransactionEdit', TransactionEdit);
 
   /* @ngInject */
-	function TransactionEdit(transaction,$stateParams){
+	function TransactionEdit(transaction,$state,$stateParams){
 		var vm = this;
 
     vm.userId=$stateParams.userId;
@@ -27,6 +27,11 @@
       })
     }
 
+    vm.updateUserTransaction=function(transactionInfo){
+
+        transaction.UpdateTransaction(vm.userId,vm.accountId,vm.transactionId,transactionInfo)
+        $state.go('Transaction',{userId:vm.userId,transactionId:vm.transactionId});
+    }
     vm.editUserTransaction();
 
 	}
