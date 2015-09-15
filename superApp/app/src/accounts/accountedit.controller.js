@@ -29,7 +29,7 @@
 
     vm.updateUserAccount=function(accountInfo){
       account.UpdateAccount(vm.userId,vm.accountId,accountInfo);
-      $state.go('Account',{userId:vm.accountId});
+      $state.go('^');
     }
 
     vm.editUserAccount()

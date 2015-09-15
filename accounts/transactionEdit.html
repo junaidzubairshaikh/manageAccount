@@ -16,7 +16,7 @@
 
         </div>
         <div class="btn-toolbar col-lg-12">
-          <button class="btn btn-primary pull-left" type="button" ng-disabled="form.$invalid " ng-click="transactionCtrl.updateUserTransaction(transactionCtrl.transactionInfo)">Update</button>
+          <button class="btn btn-primary" ng-click="vm.updateUserTransaction(vm.transactionInfo)">Update</button>
           <a class="btn btn-default" ui-sref="Transaction({userId:vm.userId,accountId:vm.accountId})">Cancel</a>
         </div>
       </form>

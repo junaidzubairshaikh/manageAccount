@@ -9,11 +9,11 @@
   'use strict';
 
   angular
-    .module('app.accounts', [])
+    .module('app.accounts', ['ngAnimate'])
     .config(configuration);
 
   /* @ngInject */
-  function configuration($stateProvider) {
+  function configuration($stateProvider ) {
 
 
     //add your state mappings here

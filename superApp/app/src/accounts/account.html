@@ -20,7 +20,7 @@
       <td>{{account.AccountNumber}}</td>
       <td>{{account.Balance}}</td>
       <td><a class="btn-link" ui-sref="Transaction({userId:vm.userId, accountId:account.AccountId})" >View Transactions</a></td>
-      <td><button class="btn-link" ng-click="vm.viewLastTransaction()">View Last Transaction</button></td>
+      <td><button class="btn-link" ng-click="vm.viewLastTransaction(account.AccountId)">View Last Transaction</button></td>
       <td><a ui-sref=".Edit({accountId: account.AccountId})">Edit</a></td>
       <td><button class="btn-link" ng-click="vm.deleteUserAccount(account.AccountId)">Delete</button></td>
 

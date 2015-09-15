@@ -30,7 +30,7 @@
     vm.updateUserTransaction=function(transactionInfo){
 
         transaction.UpdateTransaction(vm.userId,vm.accountId,vm.transactionId,transactionInfo)
-        $state.go('Transaction',{userId:vm.userId,transactionId:vm.transactionId});
+        $state.go('^');
     }
     vm.editUserTransaction();
 

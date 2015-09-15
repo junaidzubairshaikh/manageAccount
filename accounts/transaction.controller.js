@@ -41,6 +41,7 @@
       }
     }
 
+/*
     vm.editUserTransaction=function(transactionId){
 
       vm.editPanel=true;
@@ -48,10 +49,9 @@
         vm.transactionInfo=response;
       })
     }
+*/
 
-    vm.updateUserTransaction=function(accountId,accountInfo){
 
-    }
 
     vm.loadUserAccountTransactions();
 	}

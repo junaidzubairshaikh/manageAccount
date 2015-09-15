@@ -19,7 +19,8 @@
       ViewTransactions: ViewUserTransactions,
       AddTransaction: AddUserTransaction,
       DeleteTransaction: DeleteUserTransaction,
-      EditTransaction: EditUserTransaction
+      EditTransaction: EditUserTransaction,
+      UpdateTransaction: UpdateUserTransaction
     };
 
     function ViewUserTransactions(userId, accountId, callback) {
@@ -32,9 +33,9 @@
         var transactions = _.where(user.Transactions, function (x) {
           return x.AccountId == accountId;
         });
-      /*  var accountIndex = _.forEach(user.Transactions, function (x) {
-          return x.AccountId == accountId;
-        })*/
+        /*  var accountIndex = _.forEach(user.Transactions, function (x) {
+         return x.AccountId == accountId;
+         })*/
         if (callback) {
           callback(transactions);
         }
@@ -91,6 +92,36 @@
       if (callback) {
         callback(transactionInfo);
       }
+    }
+
+    function UpdateUserTransaction(userId, accountId, transactionId, transactionInfo) {
+
+      var users = userData.GetUsers();
+      var user = _.find(users, function (x) {
+        return x.id == userId;
+      });
+
+      var transactionLeft = _.remove(user.Transactions, function (x) {
+        return (x.AccountId == accountId && x.TransactionId == transactionId);
+      });
+      var transaction = {
+        'TransactionId': transactionId,
+        'AccountId': accountId,
+        'TransactionAmount': transactionInfo.TransactionAmount,
+        'TransactionDate': new Date().toUTCString()
+      };
+
+
+      var userIndex = _.findIndex(users, function (x) {
+          return x.id == userId;
+        }
+      );
+      if (userIndex > -1) {
+        users[userIndex].Transactions.push(transaction);
+        userData.SetUsers(users);
+      }
+
+      userData.SetUsers(users);
     }
   }
 

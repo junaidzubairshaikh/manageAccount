@@ -13,7 +13,7 @@
 		.controller('AccountEdit', AccountEdit);
 
   /* @ngInject */
-	function AccountEdit(account,$stateParams){
+	function AccountEdit(account,$state,$stateParams){
 		var vm = this;
 
     vm.userId=$stateParams.userId;
@@ -25,6 +25,11 @@
       account.EditAccount(vm.userId, vm.accountId, function (response) {
         vm.accountInfo = response;
       })
+    }
+
+    vm.updateUserAccount=function(accountInfo){
+      account.UpdateAccount(vm.userId,vm.accountId,accountInfo);
+      $state.go('^');
     }
 
     vm.editUserAccount()

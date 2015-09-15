@@ -12,7 +12,7 @@
         <th>&nbsp;</th>
 
       </tr>
-      <tr ng-repeat="transaction in vm.transactions">
+      <tr ng-repeat="transaction in vm.transactions | orderBy:'-TransactionAmount'">
         <td>{{transaction.TransactionId}}</td>
         <td>{{transaction.TransactionAmount | currency}}</td>
         <td>{{transaction.TransactionDate}}</td>

@@ -33,10 +33,13 @@
       }
     }
 
-    vm.viewLastTransaction = function () {
-      account.ViewLastTransaction(vm.userId, function (response) {
+    vm.viewLastTransaction = function (accountId) {
+      account.ViewLastTransaction(vm.userId,accountId, function (response) {
         if (response) {
           alert("Last transaction made on:\n Transaction Date: " + response.TransactionDate + "\n Transaction Amount: " + response.TransactionAmount);
+        }
+        else{
+          alert("No transaction found on this account.")
         }
       })
     }

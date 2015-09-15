@@ -38,14 +38,17 @@
       }
     }
 
-    function ViewLastTransaction(userId, callback) {
+    function ViewLastTransaction(userId,accountId, callback) {
 
       var users = userData.GetUsers();
       var user = _.find(users, function (x) {
         return x.id == userId;
       });
+
       if (user) {
-        var lastTransaction = _.last(user.Transactions);
+        var lastTransaction = _.last(_.filter(user.Transactions, function (x) {
+          return x.AccountId == accountId;
+        }));
         if (callback) {
           callback(lastTransaction);
         }
